@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="C:\Users\USER\Desktop\SG PROGECT\analytics.css">
+<link rel="stylesheet" href="/analytics.css">
+ <link rel="stylesheet" href="C:\Users\USER\Desktop\SG PROGECT\Assets\fontawesome\fontawesome\css\all.min.css">
+<link rel="stylesheet" href="/Assets/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+<link rel="stylesheet" href="/ui animation.css">
+<link rel="stylesheet" href="ui animation.css">
+ <title>System Settings</title>
+ <script>
+  function togglePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = popup.style.display === "none" ? "block" : "none";
+  }
+</script>
+<style>
+    #popup {
+  position: absolute;
+  background:rgb(218, 217, 217);
+  padding: 10px;
+  border: 1px solid #ccc;
+  top: 355px;
+  left: 30px;
+  width: 140px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+</style>
+<style>
+
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --primary:#2563eb;
+  --radius:12px;
+}
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+[data-theme="dark"]{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --border:#334155;
+}
+
+
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+.settings-container{
+  max-width:1100px;
+  padding:0 30px 50px;
+  margin-left: 250px;
+  display:grid;
+  gap:30px;
+}
+
+.settings-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  padding:24px;
+}
+
+.settings-card h2{
+  margin:0 0 6px;
+  font-size:20px;
+}
+
+.settings-card p{
+  margin:0 0 20px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+
+.settings-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+label{
+  font-size:13px;
+  font-weight:500;
+}
+
+input{
+  width:100%;
+  margin-top:6px;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  font-size:14px;
+  background:transparent;
+  color:var(--text);
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+.toggle-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.toggle-row:last-child{border-bottom:none;}
+
+.toggle{
+  width:44px;
+  height:24px;
+  background:#cbd5f5;
+  border-radius:999px;
+  position:relative;
+  cursor:pointer;
+}
+
+.toggle::after{
+  content:"";
+  width:18px;
+  height:18px;
+  background:#fff;
+  border-radius:50%;
+  position:absolute;
+  top:3px;
+  left:3px;
+  transition:.3s;
+}
+
+.toggle.active{
+  background:var(--primary);
+}
+
+.toggle.active::after{
+  left:23px;
+}
+
+.action-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.setb{
+  padding:12px 26px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+}
+
+.save-btn{
+  background:var(--primary);
+  color:white;
+}
+
+.reset-btn{
+  background:#ef4444;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+  <header>
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+     <h1 id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></h1>
+     <p style="color: grey; font-size:15px ; margin-left:10px  ;"> Result management</p>
+     <p class="pdash"><b><span class="span1">Settings</span></b><br>Welcome Back! Here's An Overview Of The students Performance</p>
+     <hr class="vline">
+    <div class="nav-container">
+     <nav id="navbar">
+      <div class="searchbox">
+     <input type="text" class="search" placeholder="Search student" onkeyup="search()">
+
+      <i onclick="search()" class=" fa fa-search s-icon"></i>
+      </div>
+      
+      
+<a href="#" class="navlink"><button  id="Bicon" ><p class="ap">Admin<p></p><i class="fa fa-user fa-2x "></i></button></a>
+<div id="adminListPopup" style="
+  display:none;
+  position:absolute;
+  top:60px;
+  right:10px;
+  width:260px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+  padding:10px;
+">
+  <h4 style="margin:5px 0;">Admins</h4>
+  <ul id="adminList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+<button id="bellicon"><i class="fa fa-bell" ></i></button>
+<span id="bellDot" style="
+  display:none;
+  position:absolute;
+  top:18px;
+  right:158px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:red;
+"></span>
+
+<div id="notificationPopup" style="
+  display:none;
+  position:absolute;
+  top:60px;
+  right:20px;
+  width:260px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+  padding:10px;
+">
+  <h4 style="margin:5px 0;">Notifications</h4>
+  <ul id="notificationList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+     </nav>     
+       
+    </div>
+    <hr class="hline">
+    <div class="vertical-nav">
+    <ul>
+      <li><a href="index.Html"><i class="fa fa-bars"></i>  DashBoard</a></li>
+        <li><a href="Students.html"><i class="fa fa-users"></i> Students</a></li>
+        <li><a href="admin-login.html"><i class="fa fa-file"></i> Results</a></li>
+        <li><a href="Analytics.html"><i class="fa fa-bar-chart"></i> Analysis</a></li>
+        <li><a href="settings.html"><i class="fa fa-gear"></i> Settings</a></li>
+    </ul>
+    <p class="popb" onclick="togglePopup()"  ><i class=" fa fa-"></i>More Options</p>
+
+<div id="popup" style="display: none;">
+  <a class="plink"  href="Tloginpage.html" target="_blank">login</a><br>
+  <a class="plink"  href="signuppage.html" target="_blank">Sign In</a><br>
+  <a class="plink" href="Students.html" target="_blank">View results</a>
+  </div>
+    <div class="lastnav">
+    <p>Academic year</p>
+    <h2 id="year"> 2025-2026</h2>
+    
+</div>
+
+</header>
+
+<main class="settings-container">
+
+
+<section class="settings-card">
+  <h2>School Information</h2>
+  <p>Institution details</p>
+
+  <div class="settings-grid">
+    <div><label>School Name</label><input id="schoolName"></div>
+    <div><label>School Code</label><input id="schoolCode"></div>
+    <div><label>Email</label><input id="schoolEmail"></div>
+    <div><label>Phone</label><input id="schoolPhone"></div>
+  </div>
+</section>
+
+
+<section class="settings-card">
+  <h2>Academic & Grading</h2>
+  <p>Controls result grading automatically</p>
+
+  <div class="settings-grid">
+    <div><label>Academic Year</label><input id="academicYear"></div>
+    <div><label>Passing Mark (%)</label><input id="passMark" type="number"></div>
+    <div><label>A+ Min (%)</label><input id="Aplus" type="number"></div>
+    <div><label>A Min (%)</label><input id="A" type="number"></div>
+    <div><label>B Min (%)</label><input id="B" type="number"></div>
+    <div><label>C Min (%)</label><input id="C" type="number"></div>
+    <div><label>D Min (%)</label><input id="D" type="number"></div>
+  </div>
+</section>
+
+
+<section class="settings-card">
+  <h2>Preferences</h2>
+  <p>System behavior</p>
+
+  <div class="toggle-row">
+    <span>Low Grade Alerts</span>
+    <div class="toggle" id="lowAlert"></div>
+  </div>
+
+  <div class="toggle-row">
+    <span>A+ Achievement Alerts</span>
+    <div class="toggle active" id="highAlert"></div>
+  </div>
+
+  <div class="toggle-row">
+    <span>Dark Theme</span>
+    <div class="toggle" id="darkThemeToggle"></div>
+  </div>
+</section>
+
+<div class="action-row">
+  <button class="reset-btn setb" onclick="resetSettings()">Reset to Default</button>
+  <button class="save-btn  setb" onclick="saveSettings()">Save Settings</button>
+</div>
+
+</main>
+
+<script>
+const DEFAULT_SETTINGS={
+  schoolName:"",
+  schoolCode:"",
+  schoolEmail:"",
+  schoolPhone:"",
+  academicYear:"",
+  passMark:50,
+  grades:{Aplus:90,A:80,B:70,C:60,D:50},
+  alerts:{low:true,high:true},
+  theme:"light"
+};
+
+function loadSettings(){
+  const s=JSON.parse(localStorage.getItem("systemSettings"))||DEFAULT_SETTINGS;
+
+  schoolName.value=s.schoolName;
+  schoolCode.value=s.schoolCode;
+  schoolEmail.value=s.schoolEmail;
+  schoolPhone.value=s.schoolPhone;
+  academicYear.value=s.academicYear;
+  passMark.value=s.passMark;
+
+  Aplus.value=s.grades.Aplus;
+  A.value=s.grades.A;
+  B.value=s.grades.B;
+  C.value=s.grades.C;
+  D.value=s.grades.D;
+
+  lowAlert.classList.toggle("active",s.alerts.low);
+  highAlert.classList.toggle("active",s.alerts.high);
+  darkThemeToggle.classList.toggle("active",s.theme==="dark");
+
+  document.documentElement.setAttribute("data-theme",s.theme);
+}
+
+function saveSettings(){
+  const s={
+    schoolName:schoolName.value,
+    schoolCode:schoolCode.value,
+    schoolEmail:schoolEmail.value,
+    schoolPhone:schoolPhone.value,
+    academicYear:academicYear.value,
+    passMark:+passMark.value,
+    grades:{
+      Aplus:+Aplus.value,
+      A:+A.value,
+      B:+B.value,
+      C:+C.value,
+      D:+D.value
+    },
+    alerts:{
+      low:lowAlert.classList.contains("active"),
+      high:highAlert.classList.contains("active")
+    },
+    theme:darkThemeToggle.classList.contains("active")?"dark":"light"
+  };
+
+  localStorage.setItem("systemSettings",JSON.stringify(s));
+  document.documentElement.setAttribute("data-theme",s.theme);
+  alert("Settings saved");
+}
+
+function resetSettings(){
+  if(confirm("Reset all settings to default?")){
+    localStorage.setItem("systemSettings",JSON.stringify(DEFAULT_SETTINGS));
+    loadSettings();
+  }
+}
+
+document.querySelectorAll(".toggle").forEach(t=>{
+  t.onclick=()=>t.classList.toggle("active");
+});
+
+loadSettings();
+</script>
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const adminBtn = document.getElementById("Bicon");
+  const popup = document.getElementById("adminListPopup");
+  const list = document.getElementById("adminList");
+
+  if (!adminBtn || !popup || !list) return;
+
+  function loadAdmins() {
+    list.innerHTML = "";
+    const admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    if (admins.length === 0) {
+      list.innerHTML = "<li>No admins found</li>";
+      return;
+    }
+
+    admins.forEach((admin, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+      li.style.padding = "6px 0";
+
+      li.innerHTML = `
+        <div>
+          <b>${admin.name || "Admin"}</b><br>
+          <small>${admin.email}</small>
+        </div>
+        <button data-index="${index}" style="
+          background:#d9534f;
+          color:white;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      li.querySelector("button").addEventListener("click", () => {
+        if (!confirm("Delete this admin?")) return;
+
+        admins.splice(index, 1);
+        localStorage.setItem("admins", JSON.stringify(admins));
+        loadAdmins();
+      });
+
+      list.appendChild(li);
+    });
+  }
+
+  adminBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadAdmins();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!adminBtn.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bellBtn = document.getElementById("bellicon");
+  const bellDot = document.getElementById("bellDot");
+  const popup = document.getElementById("notificationPopup");
+  const list = document.getElementById("notificationList");
+
+  if (!bellBtn || !popup || !list) return;
+
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+
+  /* CREATE NOTIFICATIONS (A+ OR FAILING GRADES) */
+  students.forEach(s => {
+    if (s.grade === "A+" || ["D","E","F"].includes(s.grade)) {
+      const exists = notifications.some(
+        n => n.matricule === s.matricule && n.grade === s.grade
+      );
+      if (!exists) {
+        notifications.push({
+          id: Date.now() + Math.random(),
+          name: s.name,
+          class: s.class,
+          matricule: s.matricule,
+          grade: s.grade,
+          type: s.grade === "A+" ? "good" : "bad",
+          read: false,
+          createdAt: Date.now()
+        });
+      }
+    }
+  });
+
+  localStorage.setItem("notifications", JSON.stringify(notifications));
+
+  /* UPDATE BELL DOT */
+  function updateDot() {
+    const unread = notifications.filter(n => !n.read);
+    if (unread.length === 0) {
+      bellDot.style.display = "none";
+      return;
+    }
+    bellDot.style.display = "block";
+    bellDot.style.background =
+      unread.some(n => n.type === "bad") ? "red" : "green";
+  }
+
+  /* LOAD NOTIFICATIONS */
+  function loadNotifications() {
+    list.innerHTML = "";
+
+    if (notifications.length === 0) {
+      list.innerHTML = "<li>No notifications</li>";
+      updateDot();
+      return;
+    }
+
+    notifications.forEach((n, index) => {
+      const li = document.createElement("li");
+      li.style.padding = "8px";
+      li.style.marginBottom = "6px";
+      li.style.borderLeft = `5px solid ${n.type === "bad" ? "red" : "green"}`;
+      li.style.background = n.read ? "#f4f4f4" : "#fff";
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+
+      li.innerHTML = `
+        <div style="cursor:pointer">
+          <b>${n.name}</b><br>
+          <small>${n.class} · ${n.matricule}</small><br>
+          <small>Grade: ${n.grade}</small>
+        </div>
+        <button style="
+          background:#d9534f;
+          color:#fff;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      /* MARK AS READ */
+      li.querySelector("div").onclick = () => {
+        n.read = true;
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      /* DELETE MANUALLY */
+      li.querySelector("button").onclick = (e) => {
+        e.stopPropagation();
+        notifications.splice(index, 1);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      list.appendChild(li);
+    });
+
+    updateDot();
+  }
+
+  /* TOGGLE POPUP */
+  bellBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadNotifications();
+  });
+
+  /* CLOSE ON OUTSIDE CLICK */
+  document.addEventListener("click", (e) => {
+    if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+  updateDot();
+});
+</script>
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+
+
+</body>
+</html>

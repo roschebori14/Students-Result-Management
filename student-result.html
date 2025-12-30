@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="ui-animations.css">
+
+<title>Student Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.box{
+    background:#fff;
+    padding:30px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+h2{text-align:center;}
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+}
+button{
+    background:#1e3c72;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.error{
+    color:red;
+    text-align:center;
+    margin-top:10px;
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Student Login</h2>
+    <input type="text" id="matricule" placeholder="Enter Matricule">
+    <button onclick="login()">Login</button>
+    <div class="error" id="error">Invalid matricule</div>
+</div>
+
+<script>
+function login(){
+    const matricule = document.getElementById("matricule").value.trim();
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+
+
+    if (matricule === "123") {
+        localStorage.setItem("studentLoggedIn", "123");
+        window.location.href = "Students.html";
+        return;
+    }
+    const student = students.find(s => s.matricule === matricule);
+
+    if(!student){
+        document.getElementById("error").style.display="block";
+        return;
+    }
+
+    localStorage.setItem("studentLoggedIn", matricule);
+    window.location.href = "Students.html";
+}
+</script>
+
+
+</body>
+</html>

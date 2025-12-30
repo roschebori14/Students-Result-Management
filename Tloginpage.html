@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/LOGIN PAGE/Lstyle.css">
+    <link rel="stylesheet" href="/analytics.css">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="stylesheet" href="Lstyle.css">
+
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+    <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+ <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+    <title>Log IN</title>
+    <style>
+h6{
+white-space:nowrap;
+overflow: hidden;
+border-right:1px solid blue;
+width:0;
+animation: typing 3s steps(30, end) 7s infinite, blink 0.7s step-end infinite;
+}
+@keyframes typing{
+10% { width: 20}
+30% {width: 27% }
+80% {width: 0 }
+100% {width: 27% }
+}
+@keyframes blink{
+ 50% {border-color: transparent; }
+}
+</style>
+
+</head>
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+<body> 
+    <nav>
+        <p id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; "><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></p>
+     
+        <div class="Nlink">
+<a href="signuppage.html">Sign Up</a>
+ </div>
+ <div class="Mlink">
+<a href="admin-login.html">Login as Admin</a>
+     </div>  
+         <button class="mdash"><a href="index.Html" style="color: white; text-decoration: none; font: optional;">My dashboard</a></button>
+    </nav>
+    <hr>
+   
+    <main>
+    <div class="out">
+    <p class="a"><span>Login to <br> Rg Institute <br></span></p>
+    <br><br>
+  <h6>Welcome to RG Institute</h6>
+    </div>
+
+<div class="box">
+    <form class="form">
+<h1>Log in</h1><br>
+<h5>Enter your credentials to access your<br>dashboard</h5>
+<label for="">School Name</label>
+<input id="school" type="text" class="formi" required placeholder="Enter School Name">
+<label for="">Email</label>
+<input id="email" type="email" class="formi" required placeholder="Enter your email">
+
+<label for="">Password</label>
+<div style="position:relative;">
+  <input
+    id="password"
+    type="password"
+    class="formi"
+    required
+    placeholder="Enter password"
+  >
+
+  <span
+    id="togglePassword"
+    style="
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      cursor:pointer;
+      user-select:none;
+      font-size:14px;
+    "
+  >
+    👁
+  </span>
+</div>
+<i style="position: absolute; top:340px; right: 60px;" class="fa fa-eye"></i>
+<button style="color: white; font-weight: 600; font-size: 20px;"
+ class="lb" type="submit">Sign in</button>
+    <div class="check"> 
+   <p1>Don't have an account?</p1>
+    <a href="signuppage.html" target="_blank">Sign up</a>
+</div>
+    </div>
+
+    
+</form>
+</main>
+<footer>
+   
+   </div>
+  <marquee> 
+<span class="i"> &copy; CopyRight RoschEbori2025</span>
+<span  class="i">&nbsp;<i class="fa fa-envelope"></i>rginstitute@gmail.com </span>
+<span  class="i">&nbsp; <i class="fa-brands fa-facebook"></i>rginstitute</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-whatsapp"></i>+237-659188549</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-tiktok"></i>+237-659188549</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-instagram"></i>RGINSITUTE</span>
+</marquee>
+
+
+
+
+  </footer>
+<script>
+document.querySelector(".form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const school = document.getElementById("school").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    const admin = admins.find(a =>
+        a.email === email &&
+        a.password === password &&
+        a.school === school
+    );
+
+    if (!admin) {
+        alert("Invalid login details. Admin not found.");
+        return;
+    }
+
+    localStorage.setItem("loggedAdmin", JSON.stringify(admin));
+
+    window.location.href = "DashBoard.Html";
+});
+</script>
+<script>
+const passwordInput = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
+
+toggle.addEventListener("click", () => {
+    const isHidden = passwordInput.type === "password";
+    passwordInput.type = isHidden ? "text" : "password";
+    toggle.textContent = isHidden ? "🙈" : "👁";
+});
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>

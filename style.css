@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+body{
+    margin: auto;
+    text-decoration: none;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
+   background-color: rgb(240, 240, 240);
+
+}
+.container{
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 12px;
+    border: 14px;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 50px;
+    align-items: right;
+    float: center;
+    margin-left: 250px;
+   
+
+}
+.graph{
+    display: flex;
+    margin: 10px;
+     width: 99%;
+   margin-top: 50px;
+    padding: 16PX, 13px, 16px, 13px;
+    border: 2px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    flex-direction: row;
+    text-align: start;
+    height: 300px;
+    background: #eef7f6ea;
+    color: solid black;
+    font-size: 25px;
+    transform: box-shadow 0s linear;
+
+}
+.graph:hover{
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.732);
+}
+.box{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    border: 12px;
+    padding: 50px;
+    gap: 20px;
+    float: center;
+    margin: auto;
+    flex-direction: column;
+    max-width: 900px;
+
+}
+.grid{
+    display: grid;
+    justify-content: space-between;
+    gap: 7px;
+    flex-direction: column;
+    grid-template-columns: repeat(1,2fr);
+    border: 3px solid #ddd;
+    padding: 50px;
+    background-color: white;
+    margin-right: 250px;
+    margin-top: 10px;
+    height: 60px;
+    color:rgba(0, 0, 0, 0.732); 
+    width: 70%;
+    border-radius: 10px;
+    font-size: 70px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.732);
+}
+#trendGraph{
+    width: 200px;
+    height: 200px;
+}
+#radarChart{
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+    
+
+}
+#ScoreDistribution{
+    width: 100px;
+    height: 500px;
+}
+.label{
+    margin: top;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+}
+.number{
+    font-size: 29px;
+    font-weight: bold;
+}
+.g{
+    color: #22a645;
+    font-size: 40px;
+}
+.r{
+    color: red;
+     font-size: 40px;
+}
+.b{
+    color: blue;
+     font-size: 40px;
+}
+.O{
+    color: orange;
+     font-size: 40px;
+}
+canvas{
+    width: 400px;
+    height: 200px;
+}
+.grid:hover{
+    background: rgb(211, 208, 208);
+    transition: 2s ease;
+    box-shadow: none;
+}
+camvas #radarChart{
+    width: 300px;
+    height: 400px;
+}
+span{
+    color: orangered;
+}
+/* RESPONSIVENESS USING FLEXBOX */
+
+@media screen and (max-width: 768px){
+    .graph{
+        width: 50%;
+        font-size: 18px;
+    }
+    .grid{
+        width: 100%;
+    }
+}
+/* MOBILE PHONE */
+
+@media screen and (max-width: 360px){
+    .graph, .grid{
+        width: 100%;
+    }
+}

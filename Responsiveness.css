@@ -1,0 +1,226 @@
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 2000;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+
+ 
+  .menu-toggle {
+    display: block;
+  }
+
+
+  #navbar,
+  nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 4px 0 15px rgba(0,0,0,.2);
+    flex-direction: column;
+    padding-top: 60px;
+    transition: left .3s ease;
+    z-index: 1500;
+  }
+
+  #navbar.active,
+  nav.active {
+    left: 0;
+  }
+
+  
+  .vertical-nav {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    padding-top: 80px;
+    transition: left .3s ease;
+    z-index: 1400;
+  }
+
+  .vertical-nav.active {
+    left: 0;
+  }
+
+
+  main,
+  .rcontainer,
+  .container {
+    margin-left: 0 !important;
+    padding: 15px;
+  }
+
+ 
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+
+  header {
+    padding-left: 60px;
+  }
+}
+
+#recres > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
+}
+
+
+#recres .rec-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+#recres .rec-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+#recres .percent {
+  font-weight: bold;
+  color: #555;
+}
+
+#recres .grade {
+  width: 40px;
+  height: 25px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+#recres > div {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  background: #f7f7f8;
+  border-radius: 14px;
+}
+
+#recres > div > button:last-of-type {
+  min-width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: powderblue;
+  color: orangered;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  position: absolute;
+  left: 20px;
+}
+#recres > div p:first-of-type {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #111827;
+  position: absolute;
+  left: 70px;
+}
+
+
+#recres > div p:last-of-type {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin-top: 20px;
+  margin-right: 0px;
+  position: absolute;
+  left: 70px;
+
+}
+
+
+#recres > div h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  position: absolute;
+  right: 100px;
+}
+
+#recres > div button:first-of-type {
+  min-width: 38px;
+  height: 24px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border: none;
+  color: #fff;
+}
+
+#recres button:first-of-type.A,
+#recres button:first-of-type.Aplus {
+  background: #16a34a;
+}
+
+#recres button:first-of-type.B,
+#recres button:first-of-type.Bplus {
+  background: #2563eb;
+}
+
+#recres button:first-of-type.C {
+  background: #f59e0b;
+}
+
+#recres button:first-of-type.D,
+#recres button:first-of-type.F {
+  background: #dc2626;
+}
+#recres > div h3,
+#recres > div button:first-of-type {
+  margin-left: auto;
+}
+@media (max-width: 640px) {
+  #recres > div {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #recres > div h3 {
+    order: 3;
+  }
+
+  #recres > div button:first-of-type {
+    order: 4;
+  }
+
+  #recres > div p {
+    width: 100%;
+    margin-left: 58px;
+  }
+}
+
+ 

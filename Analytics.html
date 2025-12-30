@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --border:#e5e7eb;
+}
+
+[data-theme="dark"]{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --border:#334155;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+section, .card, .panel, .box, table{
+  background:var(--card);
+  border-color:var(--border);
+}
+</style>
+
+  <script>
+  function togglePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = popup.style.display === "none" ? "block" : "none";
+  }
+
+</script>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Analytics/SRMD/Assets/CSS/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="analytics.css">
+    <link rel="stylesheet" href="/analytics.css">
+    <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+    <link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+ <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="C:\Users\USER\Desktop\SG PROGECT\Assets\fontawesome\fontawesome\css\all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    #popup {
+  position: absolute;
+  background:rgb(218, 217, 217);
+  padding: 10px;
+  border: 1px solid #ccc;
+  top: 355px;
+  left: 30px;
+  width: 140px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+     <header>
+     <h1 id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></h1>
+     <p style="color: grey; font-size:15px ; margin-left:10px  ;"> Result management</p>
+     <p class="pdash"><b><span class="span1">Analysis</span></b><br>Welcome Back! Here's An Overview Of The students Performance</p>
+     <hr class="vline">
+    <div class="nav-container">
+     <nav id="navbar">
+      <div class="searchbox">
+      <input type="text" class="search" placeholder="Search student...">
+      <i onclick="search()" class=" fa fa-search s-icon"></i>
+      </div>
+      
+<a href="#" class="navlink"><button  id="Bicon" ><p class="ap">Admin<p></p><i class="fa fa-user fa-2x "></i></button></a>
+<button id="bellicon"><i class="fa fa-bell" ></i></button>
+<span id="bellDot" style="
+  display:none;
+  position:absolute;
+  top:18px;
+  right:158px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:red;
+"></span>
+
+<div id="notificationPopup" style="
+  display:none;
+  position:absolute;
+  top:60px;
+  right:20px;
+  width:260px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+  padding:10px;
+">
+  <h4 style="margin:5px 0;">Notifications</h4>
+  <ul id="notificationList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+     </nav>     
+       
+    </div>
+    <hr class="hline">
+    <div class="vertical-nav">
+    <ul>
+      <li><a href="index.Html"><i class="fa fa-bars"></i>  DashBoard</a></li>
+        <li><a href="Students.html"><i class="fa fa-users"></i> Students</a></li>
+        <li><a href="admin-login.html"><i class="fa fa-file"></i> Results</a></li>
+        <li><a href="Analytics.html"><i class="fa fa-bar-chart"></i> Analysis</a></li>
+        <li><a href="settings.html"><i class="fa fa-gear"></i> Settings</a></li>
+    </ul>
+    <p class="popb" onclick="togglePopup()"  ><i class=" fa fa-"></i>More Options</p>
+
+<div id="popup" style="display: none;">
+  <a class="plink"  href="Tloginpage.html" target="_blank">login</a><br>
+  <a class="plink"  href="signuppage.html" target="_blank">Sign In</a><br>
+  <a class="plink" href="result1.html">View results</a>
+  </div>
+    <div class="lastnav">
+    <p>Academic year</p>
+    <h2 id="year"> 2025-2026</h2>
+    
+</div>
+
+ </header>  
+   <main> 
+    <div class="container">
+        <div class="graph">
+        <p id="p1">Performance<span>Trend</span></p>
+        <canvas id="trendGraph"></canvas>
+        </div>
+        <div class="graph">
+        <p id="p2">Subject <span>Comparison</span></p>
+        <canvas id="radarChart"></canvas>
+        </div>
+        <div class="graph">
+        <p id="p3">Score <span>Distribution</span></p>
+        <canvas id="ScoreDistribution"></canvas>
+        </div>
+    
+<div class="box">
+        <div class="grid">
+            <div class="label">
+            Highest Score
+            <i class="fa fa-arrow-trend-up "></i>
+           </div>
+            <div class="number g">86%</div>
+           <div class="label">
+            Pari Nair
+           </div>
+        </div>
+        <div class="grid">
+            <div class="label">
+                Lowest Score
+                <i class="fa fa-arrow-trend-down"></i>
+            </div>
+         <div class="number r">63%</div>
+            <div class="label">
+                Navye Reddy
+            </div>
+        </div>
+        <div class="grid">
+        <div class="number b">87%</div>
+          <div class="label">
+            Class Average
+          </div>
+        </div>
+        <div class="grid">
+            <div class="label">
+            Standard Deviation
+          </div>
+        <div class="number O">12.4</div>
+          <div class="label">
+           Score Variability
+        </div>
+    </div>
+    </div>
+  <script src="/Analytics/SRMD/Assets/JS/script.js"></script> 
+  <script src="C:\Users\USER\Desktop\SG PROGECT\Analytics\SRMD\Assets\JS\script.js"></script> 
+  </main>
+  <footer>
+   
+   </div>
+  <marquee> 
+<span class="z"> &copy; CopyRight RoschEbori2025</span>
+<span class="z">&nbsp;<i class="fa fa-envelope"></i>rginstitute@gmail.com </span>
+<span class="z">&nbsp; <i class="fa-brands fa-facebook"></i>rginstitute</span>
+<span class="z">&nbsp;<i class="fa-brands fa-whatsapp"></i>+237-659188549</span>
+<span class="z">&nbsp;<i class="fa-brands fa-tiktok"></i>+237-659188549</span>
+<span class="z">&nbsp;<i class="fa-brands fa-instagram"></i>RGINSITUTE</span>
+</marquee>
+
+
+
+
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const students = JSON.parse(localStorage.getItem("students")) || [];
+
+if (students.length === 0) {
+    console.warn("No students found in localStorage");
+}
+
+
+function el(selector) {
+    const e = document.querySelector(selector);
+    if (!e) console.warn("Missing element:", selector);
+    return e;
+}
+
+
+function animateNumber(element, start, end, duration = 1200, suffix = "") {
+    if (!element) return;
+
+    let startTime = null;
+
+    function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = start + (end - start) * progress;
+        element.innerText = value.toFixed(1) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+}
+
+
+if (students.length > 0) {
+    const averages = students.map(s => Number(s.avg));
+
+    const highest = Math.max(...averages);
+    const lowest = Math.min(...averages);
+    const overall = (
+        averages.reduce((a, b) => a + b, 0) / averages.length
+    ).toFixed(1);
+
+  
+    animateNumber(el(".number.g"), 0, highest, 1200, "%");
+    animateNumber(el(".number.r"), 0, lowest, 1200, "%");
+    animateNumber(el(".number.b"), 0, overall, 1200, "%");
+
+    
+    const bar = document.getElementById("ScoreDistribution");
+    if (bar && window.Chart) {
+        new Chart(bar, {
+            type: "bar",
+            data: {
+                labels: students.map(s => s.name),
+                datasets: [{
+                    data: students.map(s => s.avg),
+                    backgroundColor: "#1c3ca5"
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+
+   
+    const line = document.getElementById("trendGraph");
+    if (line && window.Chart) {
+        new Chart(line, {
+            type: "line",
+            data: {
+                labels: students.map(s => s.name),
+                datasets: [{
+                    data: students.map(s => s.avg),
+                    borderColor: "#4caf50",
+                    fill: false,
+                    tension: 0.3
+                }]
+            }
+        });
+    }
+}
+</script>
+<script>
+
+function buildSubjectComparison(students) {
+    const subjectTotals = {};
+    const subjectCounts = {};
+
+    students.forEach(student => {
+        student.subjects.forEach(subject => {
+            const name = subject.sub;
+            const mark = Number(subject.mark);
+
+            if (!subjectTotals[name]) {
+                subjectTotals[name] = 0;
+                subjectCounts[name] = 0;
+            }
+
+            subjectTotals[name] += mark;
+            subjectCounts[name] += 1;
+        });
+    });
+
+    const labels = Object.keys(subjectTotals);
+    const averages = labels.map(
+        sub => (subjectTotals[sub] / subjectCounts[sub]).toFixed(1)
+    );
+
+    return { labels, averages };
+}
+
+
+
+const subjectCanvas = document.getElementById("radarChart");
+
+if (subjectCanvas && window.Chart && students.length > 0) {
+    const subjectData = buildSubjectComparison(students);
+
+    new Chart(subjectCanvas, {
+        type: "radar",   // or "bar" if you prefer
+        data: {
+            labels: subjectData.labels,
+            datasets: [{
+                label: "Average per Subject",
+                data: subjectData.averages,
+                backgroundColor: "rgba(33, 150, 243, 0.2)",
+                borderColor: "#2196f3",
+                pointBackgroundColor: "#2196f3"
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const adminBtn = document.getElementById("Bicon");
+  const popup = document.getElementById("adminListPopup");
+  const list = document.getElementById("adminList");
+
+  if (!adminBtn || !popup || !list) return;
+
+  function loadAdmins() {
+    list.innerHTML = "";
+    const admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    if (admins.length === 0) {
+      list.innerHTML = "<li>No admins found</li>";
+      return;
+    }
+
+    admins.forEach((admin, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+      li.style.padding = "6px 0";
+
+      li.innerHTML = `
+        <div>
+          <b>${admin.name || "Admin"}</b><br>
+          <small>${admin.email}</small>
+        </div>
+        <button data-index="${index}" style="
+          background:#d9534f;
+          color:white;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      li.querySelector("button").addEventListener("click", () => {
+        if (!confirm("Delete this admin?")) return;
+
+        admins.splice(index, 1);
+        localStorage.setItem("admins", JSON.stringify(admins));
+        loadAdmins();
+      });
+
+      list.appendChild(li);
+    });
+  }
+
+  adminBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadAdmins();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!adminBtn.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bellBtn = document.getElementById("bellicon");
+  const bellDot = document.getElementById("bellDot");
+  const popup = document.getElementById("notificationPopup");
+  const list = document.getElementById("notificationList");
+
+  if (!bellBtn || !popup || !list) return;
+
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+
+  /* CREATE NOTIFICATIONS (A+ OR FAILING GRADES) */
+  students.forEach(s => {
+    if (s.grade === "A+" || ["D","E","F"].includes(s.grade)) {
+      const exists = notifications.some(
+        n => n.matricule === s.matricule && n.grade === s.grade
+      );
+      if (!exists) {
+        notifications.push({
+          id: Date.now() + Math.random(),
+          name: s.name,
+          class: s.class,
+          matricule: s.matricule,
+          grade: s.grade,
+          type: s.grade === "A+" ? "good" : "bad",
+          read: false,
+          createdAt: Date.now()
+        });
+      }
+    }
+  });
+
+  localStorage.setItem("notifications", JSON.stringify(notifications));
+
+  /* UPDATE BELL DOT */
+  function updateDot() {
+    const unread = notifications.filter(n => !n.read);
+    if (unread.length === 0) {
+      bellDot.style.display = "none";
+      return;
+    }
+    bellDot.style.display = "block";
+    bellDot.style.background =
+      unread.some(n => n.type === "bad") ? "red" : "green";
+  }
+
+  /* LOAD NOTIFICATIONS */
+  function loadNotifications() {
+    list.innerHTML = "";
+
+    if (notifications.length === 0) {
+      list.innerHTML = "<li>No notifications</li>";
+      updateDot();
+      return;
+    }
+
+    notifications.forEach((n, index) => {
+      const li = document.createElement("li");
+      li.style.padding = "8px";
+      li.style.marginBottom = "6px";
+      li.style.borderLeft = `5px solid ${n.type === "bad" ? "red" : "green"}`;
+      li.style.background = n.read ? "#f4f4f4" : "#fff";
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+
+      li.innerHTML = `
+        <div style="cursor:pointer">
+          <b>${n.name}</b><br>
+          <small>${n.class} · ${n.matricule}</small><br>
+          <small>Grade: ${n.grade}</small>
+        </div>
+        <button style="
+          background:#d9534f;
+          color:#fff;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      /* MARK AS READ */
+      li.querySelector("div").onclick = () => {
+        n.read = true;
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      /* DELETE MANUALLY */
+      li.querySelector("button").onclick = (e) => {
+        e.stopPropagation();
+        notifications.splice(index, 1);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      list.appendChild(li);
+    });
+
+    updateDot();
+  }
+
+  /* TOGGLE POPUP */
+  bellBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadNotifications();
+  });
+
+  /* CLOSE ON OUTSIDE CLICK */
+  document.addEventListener("click", (e) => {
+    if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+  updateDot();
+});
+</script>
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+
+
+
+</body>
+</html>

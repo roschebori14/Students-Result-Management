@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <link rel="stylesheet" href="Lstyle.css">
+ <link rel="stylesheet" href="/LOGIN PAGE/Lstyle.css">
+ <link rel="stylesheet" href="/analytics.css">
+ <link rel="stylesheet" href="analytics.css">
+ <link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+ <link rel="stylesheet" href="/ui animation.css">
+<link rel="stylesheet" href="ui animation.css">
+     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+     <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+ <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+<title>Student Result View</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+  
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+.subjects {
+    font-size: 14px;
+    text-align: left;
+}
+tbody tr {
+  transition: all 0.25s ease;
+}
+
+tbody tr:hover td {
+  color: #1e40af;
+}
+
+
+body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+
+.container {
+  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+}
+
+
+.container h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #1e293b;
+  position: relative;
+}
+
+.container h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 4px;
+}
+
+
+tbody tr {
+  animation: rowFade 0.6s ease forwards;
+}
+
+
+tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.15);
+}
+
+
+td:last-child {
+  padding: 6px 10px;
+  border-radius: 20px;
+  color: white;
+  display: inline-block;
+  min-width: 45px;
+}
+
+
+td:last-child:contains("A") { background: #16a34a; }
+td:last-child:contains("B") { background: #2563eb; }
+td:last-child:contains("C") { background: #f59e0b; }
+td:last-child:contains("D"),
+td:last-child:contains("F") { background: #dc2626; }
+
+
+.search-box {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+
+.search-box input,
+.search-box select {
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.search-box input:hover,
+.search-box select:hover {
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+}
+
+
+nav {
+  animation: slideDown 0.6s ease;
+}
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rowFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
+<style>
+table {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead th {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f1f5ff;
+  transition: 0.2s;
+}
+
+
+td:last-child {
+  font-weight: bold;
+}
+
+td:last-child::before {
+  content: "";
+}
+
+
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.search-box input,
+.search-box select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-box input:focus,
+.search-box select:focus {
+  border-color: #2563eb;
+}
+</style>
+<link rel="stylesheet" href="ui-animations.css">
+
+</head>
+
+<body>
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+<nav>
+        <p id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; "><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></p>
+     
+        <div class="Nlink">
+<a href="signuppage.html">Sign Up</a>
+ </div>
+ <div class="Mlink">
+<a href="admin-login.html">Login</a>
+
+     </div>  
+        <button class="mdash"><a href="index.Html" style="color: white; text-decoration: none; font: optional;">My dashboard</a></button>
+<button onclick="logout()" style="position:absolute;
+ right:500px; background-color:red; padding:7px; border-radius:10px; border:none;">Logout</button>
+
+    </nav>
+    <hr>
+    <main>
+<div class="container">
+    <h2>Student Result Portal</h2>
+<div style="
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(37,99,235,0.3);
+">
+  <strong>Academic Results Dashboard</strong><br>
+  Secure · Real-Time · Professional
+</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+               <th>Matricule</th>
+                <th>Class</th>
+                <th>Department</th>
+                <th>Subjects</th>
+                <th>Total</th>
+                <th>Average</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable"></tbody>
+    </table>
+</div>
+
+<script>
+const matricule = localStorage.getItem("studentLoggedIn");
+
+if (!matricule) {
+    window.location.href = "student-result.html";
+}
+
+const students = JSON.parse(localStorage.getItem("students")) || [];
+const table = document.getElementById("resultTable");
+
+/* ===== MASTER VIEW MATRICULE 123===== */
+if (matricule === "123") {
+    table.innerHTML = "";
+
+    students.forEach(s => {
+        const subjectList = s.subjects
+            .map(sub => `${sub.sub}: ${sub.mark}`)
+            .join("<br>");
+
+        table.innerHTML += `
+        <tr>
+            <td>${s.name}</td>
+            <td>${s.matricule}</td>
+            <td>${s.class}</td>
+            <td>${s.department}</td>
+            <td class="subjects">${subjectList}</td>
+            <td>${s.total}</td>
+            <td>${s.avg}</td>
+            <td>${s.grade}</td>
+        </tr>`;
+    });
+
+} 
+/* ===== NORMAL STUDENT VIEW ===== */
+else {
+    const student = students.find(s => s.matricule === matricule);
+
+    if (!student) {
+        localStorage.removeItem("studentLoggedIn");
+        window.location.href = "student-result.html";
+    }
+
+    const subjectList = student.subjects
+        .map(sub => `${sub.sub}: ${sub.mark}`)
+        .join("<br>");
+
+    table.innerHTML = `
+        <tr>
+            <td>${student.name}</td>
+            <td>${student.matricule}</td>
+            <td>${student.class}</td>
+            <td>${student.department}</td>
+            <td class="subjects">${subjectList}</td>
+            <td>${student.total}</td>
+            <td>${student.avg}</td>
+            <td>${student.grade}</td>
+        </tr>
+    `;
+}
+</script>
+<script>
+function logout() {
+    localStorage.removeItem("studentLoggedIn");
+    window.location.href = "student-result.html";
+}
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+<script>
+/* ===== Inject Search + Sort UI (NO HTML CHANGE) ===== */
+const container = document.querySelector(".container h2");
+if (container) {
+  container.insertAdjacentHTML("afterend", `
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search name, matricule, class...">
+      <select id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="name">Name</option>
+        <option value="avg">Average</option>
+        <option value="grade">Grade</option>
+      </select>
+    </div>
+  `);
+}
+</script>
+<script>
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+
+/* Cache original data */
+let displayedStudents = [...students];
+
+/* Re-render function */
+function renderFiltered(list) {
+  table.innerHTML = "";
+
+  list.forEach(s => {
+    const subjectList = s.subjects
+      .map(sub => `${sub.sub}: ${sub.mark}`)
+      .join("<br>");
+
+    table.innerHTML += `
+      <tr>
+        <td>${s.name}</td>
+        <td>${s.matricule}</td>
+        <td>${s.class}</td>
+        <td>${s.department}</td>
+        <td class="subjects">${subjectList}</td>
+        <td>${s.total}</td>
+        <td>${s.avg}</td>
+        <td>${s.grade}</td>
+      </tr>`;
+  });
+}
+
+/* SEARCH */
+searchInput?.addEventListener("input", () => {
+  const q = searchInput.value.toLowerCase();
+
+  const filtered = displayedStudents.filter(s =>
+    s.name.toLowerCase().includes(q) ||
+    s.matricule.toLowerCase().includes(q) ||
+    s.class.toLowerCase().includes(q) ||
+    s.department.toLowerCase().includes(q)
+  );
+
+  renderFiltered(filtered);
+});
+
+/* SORT */
+sortSelect?.addEventListener("change", () => {
+  let sorted = [...displayedStudents];
+
+  if (sortSelect.value === "name") {
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  if (sortSelect.value === "avg") {
+    sorted.sort((a, b) => b.avg - a.avg);
+  }
+  if (sortSelect.value === "grade") {
+    sorted.sort((a, b) => a.grade.localeCompare(b.grade));
+  }
+
+  renderFiltered(sorted);
+});
+
+/* Limit to MASTER view only */
+if (matricule !== "123") {
+  document.querySelector(".search-box")?.remove();
+}
+</script>
+<script>
+document.querySelectorAll("tbody tr").forEach((row, i) => {
+  row.style.animationDelay = `${i * 0.05}s`;
+});
+</script>
+
+
+
+</main>
+</body>
+</html>

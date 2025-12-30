@@ -1,0 +1,210 @@
+header{
+    position: fixed;
+    width: 100%;
+   z-index: 3;
+   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.main{
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+}
+.pdash{
+    position: absolute;
+    left: 250px;
+    top: 0px;
+    font-size: 12px;
+    font-family: 'poppins'sans-serif;
+    color: grey;
+    font-size: 15px;
+    margin-top: 10px;
+   
+}
+.vline{
+    transform: rotate(90deg);
+   width:458px;
+   position: fixed;
+    
+}
+.span1{
+    color:blue;
+    font-size:17px;
+}
+.nav-container{
+    display: flex;
+    flex-direction: row;
+     background-color: white;
+     height: 0px;
+     position:static;
+     margin-top: 2;
+     
+
+}
+.ap{
+    color: black;
+   
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+   
+ 
+}
+#Bicon{
+    color:Blue;
+    border: 5px;
+    margin-left:220px;
+    position: absolute;
+    top:10px;
+    width: 100px;
+    right: 7px;
+    padding: 2px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 1s ease;
+   
+}
+#Bicon:hover{
+    background: orange;
+    color: white;
+}
+#Bicon:active{
+    background-color: rgb(158, 107, 11);
+}
+#bellicon{
+position: absolute;
+top:20px;
+right: 160px;
+width: 30px;
+padding: 5px;
+border: none;
+border-radius: 5px;
+
+}
+#bellicon:hover{
+    background-color: orange;
+    
+}
+#logo{
+    margin-right: 1000px;
+    font-size: 25px;
+    
+}
+.search{
+    width: 250px;
+    position: absolute;
+    right: 300px;
+    top: 10px;
+    padding: 10px;
+    border-radius: 9px;
+    border: 1px solid rgb(224, 222, 222);
+    background-color: rgb(233, 230, 230);
+
+}
+.s-icon{
+    position: absolute;
+    right: 310px;
+    top: 20px;
+    color: grey;
+}
+.searchbox{
+    display: flex;
+    flex-direction: row;
+}
+.vertical-nav {
+    width: 230px;
+    background-color: #e0e0e0;
+    height: 100%; 
+    position: fixed;
+    left: 0;
+    
+}
+
+.vertical-nav ul {
+    list-style-type: none; 
+    padding: 0;
+    margin-top: 20px;
+}
+
+.vertical-nav li a {
+    display: block;
+    padding: 8px 16px; 
+    text-decoration: none; 
+    color: #000;
+    margin-top: 20px;
+    border-radius: 10px;
+    width:200px ;
+
+}
+
+.vertical-nav li a:hover {
+    background-color: #1c3ca5; 
+    color: white;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.732);
+}
+.vertical-nav li a:active{
+    background-color: orangered;
+}
+.lastnav{
+    border: 1px solid grey;
+    background-color: rgb(199, 194, 194);
+    border-radius: 10px;
+    width:200px;
+    text-align: center;
+    margin-top: 140px;
+    height: 70px;
+}
+.lastnav:hover{
+ background-color: #999696;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.732);
+}
+.plink{
+    text-decoration: none;
+    color: black;
+
+}
+.plink:hover{
+    background-color: rgb(185, 179, 179);
+}
+.popb{
+background-color: rgb(184, 178, 178);
+padding: 7px;
+border: none;
+border-radius: 10px;
+margin-top: 30px;
+margin-left: 5px;
+width: 200px;
+text-align: center;
+}
+.popb:hover{
+    background-color: orange;
+}
+.popb:active{
+background-color: blue;
+color: white;
+}
+
+#year{
+    color: blue;
+    font-size: large;
+}
+footer{
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    float: right;
+    position: fixed;
+    bottom: 0px;
+    left: 400px;
+    color: grey;
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+    word-spacing: 5px;
+   z-index: 4;
+}
+.z{
+    color: grey;
+}

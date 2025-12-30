@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+   <script>
+  function togglePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = popup.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+
+<style>
+    #popup {
+  position: absolute;
+  background:rgb(218, 217, 217);
+  padding: 10px;
+  border: 1px solid #ccc;
+  top: 355px;
+  left: 30px;
+  width: 140px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+</style>
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --border:#e5e7eb;
+}
+
+[data-theme="dark"]{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --border:#334155;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+section, .card, .panel, .box, table{
+  background:var(--card);
+  border-color:var(--border);
+}
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+    <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="Dstyle.css">
+    <link rel="stylesheet" href="/Dstyle.css">
+    <link rel="stylesheet" href="C:\Users\USER\Desktop\SG PROGECT\Assets\fontawesome\css\all.min.css">
+<link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+ <link rel="stylesheet" href="/ui animation.css">
+<link rel="stylesheet" href="ui animation.css">
+</head>
+<body>
+  <header>
+
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+     <h1 id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></h1>
+     <p style="color: grey; font-size:15px ; margin-left:10px  ;"> Result management</p>
+     <p class="pdash"><b><span class="span1">DashBoard</span></b><br>Welcome Back! Here's An Overview Of The students Performance</p>
+     <hr class="vline">
+    <div class="nav-container">
+     <nav id="navbar">
+      <div class="searchbox">
+     <input type="text" class="search" placeholder="Search student" onkeyup="search()">
+
+      <i onclick="search()" class=" fa fa-search s-icon"></i>
+      </div>
+      
+<a href="#" class="navlink"><button  id="Bicon" ><p class="ap">Admin<p></p><i class="fa fa-user fa-2x "></i></button></a>
+<button id="bellicon"><i class="fa fa-bell" ></i></button>
+<span id="bellDot" style="
+  display:none;
+  position:absolute;
+  top:18px;
+  right:158px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:red;
+"></span>
+
+<div id="notificationPopup" style="
+  display:none;
+  position:absolute;
+  top:60px;
+  right:20px;
+  width:260px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+  padding:10px;
+">
+  <h4 style="margin:5px 0;">Notifications</h4>
+  <ul id="notificationList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+     </nav>     
+       
+    </div>
+    <hr class="hline">
+    <div class="vertical-nav">
+    <ul>
+      <li><a href="index.Html"><i class="fa fa-bars"></i>  DashBoard</a></li>
+        <li><a href="Students.html"><i class="fa fa-users"></i> Students</a></li>
+        <li><a href="admin-login.html"><i class="fa fa-file"></i> Results</a></li>
+        <li><a href="Analytics.html"><i class="fa fa-bar-chart"></i> Analysis</a></li>
+        <li><a href="settings.html"><i class="fa fa-gear"></i> Settings</a></li>
+    </ul>
+    <p class="popb" onclick="togglePopup()"  ><i class=" fa fa-"></i>More Options</p>
+
+<div id="popup" style="display: none;">
+  <a class="plink"  href="Tloginpage.html" target="_blank">login</a><br>
+  <a class="plink"  href="signuppage.html" target="_blank">Sign In</a><br>
+  <a class="plink" href="Students.html" target="_blank">View results</a>
+  </div>
+    <div class="lastnav">
+    <p>Academic year</p>
+    <h2 id="year"> 2025-2026</h2>
+    
+</div>
+
+ </header>  
+
+<section class="main">
+<main>
+  <section class="container">
+<div id="totalstu" class="boxes">
+ <p style="margin-top: 15px;">Total Students</p>
+ <h1>25</h1>
+ <p>Enrolled This Term</p>
+ <i style="position: absolute; left: 420px; top: 85px;" class="fa fa-users fa-2x"></i>
+</div>
+<div id="avescore" class="boxes">
+  <p style="margin-top: 15px; color: grey; font-weight: 400px;">Average Score</p>
+ <h1>71%</h1>
+ <p style="position: absolute; right: 10px; top:40px; width: 50px; background-color: rgb(223, 218, 218); border: none; border-radius: 7px; height:40px;"><i style=" color: blue;" class="fa fa-arrow-trend-up fa-2x"></i></p>
+ <p>Class Performance</p><br>
+ <p style="color:green;">+5.1% from last Term</p>
+</div>
+
+<div id="topperf" class="boxes">
+ <p style="margin-top: 15px;">Top Perfomances</p>
+ <h1>1</h1><br>
+ <p>Student with A or A+</p>
+ <button style="position: absolute; right: 10px; top:40px; width: 50px; background-color: rgb(197, 140, 33); border: none; border-radius: 7px; height:40px;"><i style=" color: white;" class="fa fa-trophy fa-2x"></i></button>
+</div>
+
+<div id="passR" class="boxes">
+ <p style="margin-top: 15px;">Pass Rates</p>
+ <h1>90%</h1><br>
+ <p>Student Passed</p>
+ <button style="position: absolute; right: 10px; top:40px; width: 50px; background-color: green; border: none; border-radius: 7px; height:40px;"><i style=" color:white ;" class="fa fa-graduation-cap fa-2x"></i></button>
+</div>
+ </section>
+ <section class="container2">
+<div id="gradis">
+  <h3>Grade Distibution</h3>
+ <div class="chart-container">
+  <div class="donut-chart"></div>
+  <div class="chart-legend">
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #4CAF50;"></span> Grade A
+      
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #3f51b5;"></span> Grade B+
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #03A9F4;"></span> Grade B
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #FF9800;"></span> Grade C
+    </div>
+  </div>
+</div>
+
+</div>
+<div id="subwise">
+  <h3>Subject-Wise Perfomances
+  <div class="chart-wrapper">
+  <ul class="chart-container">
+    <li style="width: 70%;">Mathematics</li>
+    <li style="width: 68%;">Physics</li>
+    <li style="width: 65%;">Chemistry</li>
+    <li style="width: 62%;">English</li>
+    <li style="width: 65%;">Computer Science</li>
+  </ul>
+  <div class="x-axis-labels">
+    <span>0</span>
+    <span>25</span>
+    <span>50</span>
+    <span>75</span>
+    <span>100</span>
+  </div>
+</div>
+
+</div>
+<div id="topperfs">
+  <h3><i style="color:gold" class="fa fa-trophy"></i>Top Perfomances</h3>
+  
+  <div class="top1">
+    <i class="fa-solid fa-trophy" style="color: gold;"></i>
+
+    <p>Rosch Ebori</p>
+    <p>Roll No: 2009765 . Class 12th-A</p>
+     <h3 style="color:green; position: absolute; right:40px ; top:55px;    ">80%<br><span>Grade A</span></h3>
+  </div>
+  <div class="top2">
+     <i class="fa-solid fa-medal" style="color: grey;"></i>
+    <p>Rosch Ebori</p>
+    <p>Roll No: 2009765 . Class 12th-A</p>
+    <h3 style="color:green; position: absolute; right:40px ; top:145px;   ">76%<br><span>Grade B+</span></h3>
+  </div>
+  <div class="top3">
+     <i class="fa-solid fa-medal" style="color: brown;"></i>
+    <p>Rosch Ebori</p>
+    <p>Roll No: 2009765 . Class 12th-A</p>
+     <h3 style="color:green; position: absolute; right:40px ; top:235px    ">75%<br><span>Grade B+</span></h3>
+  </div>
+</div>
+
+<div id="recres">
+  <h3>Recent Results</h3>
+  <div class="rec1">
+       
+    <h3>86%</h3>
+    <button class="grade"><b>A</b></button>
+      <button>RG</button>
+  <p>Rosch Ebori</p>
+  <p>202948900 . 12th-A</p>
+
+  </div>
+  <div class="rec2">
+    <h3>81%</h3>
+    <button class="grade"><b>A</b></button>
+     <button>RG</button>
+  <p>Rosch Ebori</p>
+  <p>202948900 . 12th-A</p>
+  </div>
+
+
+  <div class="rec3">
+        
+    <h3>78%</h3>
+    <button class="grade"><b>B+</b></button>
+     <button>RG</button>
+  <p>Rosch Ebori</p>
+  <p>202948900 . 12th-A</p>
+  </div>
+
+
+  <div class="rec4">
+    <h3>75%</h3>
+    <button class="grade"><b>B</b></button> 
+ <button>RG</button>
+  <p>Rosch Ebori</p>
+  <p>202948900 . 12th-A</p>
+  </div>
+
+
+  <div class="rec5">
+    <h3>70%</h3>
+    <button class="grade"><b>B</b></button>
+    <button>RG</button>
+  <p>Rosch Ebori</p>
+  <p>202948900 . 12th-A</p>
+  </div>
+ 
+  </div>
+ 
+  </div>
+</div>
+ </section>
+  </main>
+</section>
+  <footer>
+   
+   </div>
+  <marquee> 
+<span> &copy; CopyRight RoschEbori2025</span>
+<span>&nbsp;<i class="fa fa-envelope"></i>rginstitute@gmail.com </span>
+<span>&nbsp; <i class="fa-brands fa-facebook"></i>rginstitute</span>
+<span>&nbsp;<i class="fa-brands fa-whatsapp"></i>+237-659188549</span>
+<span>&nbsp;<i class="fa-brands fa-tiktok"></i>+237-659188549</span>
+<span>&nbsp;<i class="fa-brands fa-instagram"></i>RGINSITUTE</span>
+</marquee>
+
+  </footer>
+<div id="adminListPopup" style="
+  display:none;
+  position:absolute;
+  top:70px;
+  right:30px;
+  background:#f2f2f2;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:10px;
+  width:220px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+">
+  <h4 style="margin:5px 0;">Saved Admins</h4>
+  <ul id="adminList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+<script>
+
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+}
+
+
+function animateValue(el, start, end, duration = 1200) {
+    let startTime = null;
+    function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        el.innerText = Math.floor(progress * (end - start) + start);
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+
+const students = JSON.parse(localStorage.getItem("students")) || [];
+const PASS_MARK = 50;
+
+
+animateValue(
+  document.querySelector("#totalstu h1"),
+  0,
+  students.length
+);
+
+
+let overallAvg = students.length
+  ? (students.reduce((s, x) => s + Number(x.avg), 0) / students.length).toFixed(1)
+  : 0;
+
+
+let passed = students.filter(s => Number(s.avg) >= PASS_MARK).length;
+let passRate = students.length
+  ? ((passed / students.length) * 100).toFixed(0)
+  : 0;
+
+
+let topCount = students.filter(s => ["A","A+"].includes(s.grade)).length;
+
+
+animateValue(document.querySelector("#avescore h1"), 0, overallAvg);
+animateValue(document.querySelector("#passR h1"), 0, passRate);
+animateValue(document.querySelector("#topperf h1"), 0, topCount);
+
+
+setTimeout(() => {
+  document.querySelector("#avescore h1").innerText += "%";
+  document.querySelector("#passR h1").innerText += "%";
+}, 1300);
+
+
+const ranked = [...students].sort((a,b) => b.avg - a.avg);
+const topDivs = [
+  document.querySelector("#topperfs .top1"),
+  document.querySelector("#topperfs .top2"),
+  document.querySelector("#topperfs .top3")
+];
+
+topDivs.forEach((div, i) => {
+  if (!ranked[i]) return;
+  div.querySelector("p").innerText = ranked[i].name;
+  div.querySelectorAll("p")[1].innerText =
+    `Class ${ranked[i].class} · ${ranked[i].department || ""}`;
+  div.querySelector("h3").innerHTML =
+    `${ranked[i].avg}%<br><span>Grade ${ranked[i].grade}</span>`;
+});
+
+
+const recent = ranked.slice(0,5);
+document.querySelectorAll("#recres > div").forEach((div, i) => {
+  if (!recent[i]) return;
+  div.querySelector("p").innerText = recent[i].name;
+  div.querySelectorAll("p")[1].innerText =
+    `${recent[i].class} · ${recent[i].department || ""}`;
+  div.querySelector("h3").innerText = recent[i].avg + "%";
+  div.querySelector("button b").innerText = recent[i].grade;
+});
+
+const grades = {};
+students.forEach(s => grades[s.grade] = (grades[s.grade] || 0) + 1);
+
+const donut = document.querySelector(".donut-chart");
+let total = students.length || 1;
+let offset = 0;
+let colors = ["#4CAF50","#3f51b5","#03A9F4","#FF9800","#9c27b0"];
+
+donut.style.background =
+  "conic-gradient(" +
+  Object.entries(grades).map(([g,v],i)=>{
+    let start = offset;
+    offset += (v/total)*100;
+    return `${colors[i % colors.length]} ${start}% ${offset}%`;
+  }).join(",") +
+  ")";
+
+
+const subjectMap = {};
+students.forEach(s => {
+  s.subjects.forEach(sub => {
+    subjectMap[sub.sub] ??= [];
+    subjectMap[sub.sub].push(sub.mark);
+  });
+});
+
+const subjectBars = document.querySelectorAll("#subwise li");
+Object.keys(subjectMap).forEach((sub,i)=>{
+  if(!subjectBars[i]) return;
+  let avg = subjectMap[sub].reduce((a,b)=>a+b,0)/subjectMap[sub].length;
+  subjectBars[i].innerText = sub;
+  subjectBars[i].style.width = avg + "%";
+});
+
+
+function search() {
+  const q = document.querySelector(".search").value.toLowerCase();
+  document.querySelectorAll("#recres > div").forEach(div => {
+    const name = div.querySelector("p")?.innerText.toLowerCase() || "";
+    div.style.display = name.includes(q) ? "block" : "none";
+  });
+}
+
+
+const classes = [...new Set(students.map(s => s.class))];
+const filter = document.createElement("select");
+filter.style.marginLeft = "15px";
+filter.innerHTML =
+  `<option value="">All Classes</option>` +
+  classes.map(c => `<option>${c}</option>`).join("");
+document.querySelector(".searchbox").appendChild(filter);
+
+filter.onchange = () => {
+  document.querySelectorAll("#recres > div").forEach(div => {
+    const cls = div.querySelectorAll("p")[1]?.innerText || "";
+    div.style.display =
+      !filter.value || cls.includes(filter.value) ? "block" : "none";
+  });
+};
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const adminBtn = document.getElementById("Bicon");
+  const popup = document.getElementById("adminListPopup");
+  const list = document.getElementById("adminList");
+
+  if (!adminBtn || !popup || !list) return;
+
+  function loadAdmins() {
+    list.innerHTML = "";
+    const admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    if (admins.length === 0) {
+      list.innerHTML = "<li>No admins found</li>";
+      return;
+    }
+
+    admins.forEach((admin, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+      li.style.padding = "6px 0";
+
+      li.innerHTML = `
+        <div>
+          <b>${admin.name || "Admin"}</b><br>
+          <small>${admin.email}</small>
+        </div>
+        <button data-index="${index}" style="
+          background:#d9534f;
+          color:white;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      li.querySelector("button").addEventListener("click", () => {
+        if (!confirm("Delete this admin?")) return;
+
+        admins.splice(index, 1);
+        localStorage.setItem("admins", JSON.stringify(admins));
+        loadAdmins();
+      });
+
+      list.appendChild(li);
+    });
+  }
+
+  adminBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadAdmins();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!adminBtn.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bellBtn = document.getElementById("bellicon");
+  const bellDot = document.getElementById("bellDot");
+  const popup = document.getElementById("notificationPopup");
+  const list = document.getElementById("notificationList");
+
+  if (!bellBtn || !popup || !list) return;
+
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+
+  /* CREATE NOTIFICATIONS (A+ OR FAILING GRADES) */
+  students.forEach(s => {
+    if (s.grade === "A+" || ["D","E","F"].includes(s.grade)) {
+      const exists = notifications.some(
+        n => n.matricule === s.matricule && n.grade === s.grade
+      );
+      if (!exists) {
+        notifications.push({
+          id: Date.now() + Math.random(),
+          name: s.name,
+          class: s.class,
+          matricule: s.matricule,
+          grade: s.grade,
+          type: s.grade === "A+" ? "good" : "bad",
+          read: false,
+          createdAt: Date.now()
+        });
+      }
+    }
+  });
+
+  localStorage.setItem("notifications", JSON.stringify(notifications));
+
+  /* UPDATE BELL DOT */
+  function updateDot() {
+    const unread = notifications.filter(n => !n.read);
+    if (unread.length === 0) {
+      bellDot.style.display = "none";
+      return;
+    }
+    bellDot.style.display = "block";
+    bellDot.style.background =
+      unread.some(n => n.type === "bad") ? "red" : "green";
+  }
+
+  /* LOAD NOTIFICATIONS */
+  function loadNotifications() {
+    list.innerHTML = "";
+
+    if (notifications.length === 0) {
+      list.innerHTML = "<li>No notifications</li>";
+      updateDot();
+      return;
+    }
+
+    notifications.forEach((n, index) => {
+      const li = document.createElement("li");
+      li.style.padding = "8px";
+      li.style.marginBottom = "6px";
+      li.style.borderLeft = `5px solid ${n.type === "bad" ? "red" : "green"}`;
+      li.style.background = n.read ? "#f4f4f4" : "#fff";
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+
+      li.innerHTML = `
+        <div style="cursor:pointer">
+          <b>${n.name}</b><br>
+          <small>${n.class} · ${n.matricule}</small><br>
+          <small>Grade: ${n.grade}</small>
+        </div>
+        <button style="
+          background:#d9534f;
+          color:#fff;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      /* MARK AS READ */
+      li.querySelector("div").onclick = () => {
+        n.read = true;
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      /* DELETE MANUALLY */
+      li.querySelector("button").onclick = (e) => {
+        e.stopPropagation();
+        notifications.splice(index, 1);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      list.appendChild(li);
+    });
+
+    updateDot();
+  }
+
+  /* TOGGLE POPUP */
+  bellBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadNotifications();
+  });
+
+  /* CLOSE ON OUTSIDE CLICK */
+  document.addEventListener("click", (e) => {
+    if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+  updateDot();
+});
+</script>
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+<script>
+/* ========= FORCE RG AVATAR FROM STUDENT NAME ========= */
+(function forceRGAvatar() {
+  try {
+    const cards = document.querySelectorAll("#recres > div");
+
+    cards.forEach(card => {
+      const nameEl = card.querySelector("p"); // first <p> = name
+      const buttons = card.querySelectorAll("button");
+
+      if (!nameEl || buttons.length < 2) return;
+
+      const avatarBtn = buttons[1]; // SECOND button is RG avatar
+
+      const parts = nameEl.textContent.trim().split(/\s+/);
+      const initials =
+        parts.length >= 2
+          ? parts[0][0] + parts[1][0]
+          : parts[0][0];
+
+      avatarBtn.textContent = initials.toUpperCase();
+    });
+  } catch (e) {
+    console.error("RG Avatar update failed:", e);
+  }
+})();
+</script>
+<script>
+/* ========= RECENT RESULTS OVERRIDE (SAFE) ========= */
+(function updateRecentResults() {
+  try {
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+    if (!students.length) return;
+
+    // Get latest 5 students (by insertion order)
+    const recentStudents = students.slice(-5).reverse();
+
+    // Select recent result cards (keep your existing structure)
+    const cards = document.querySelectorAll("#recres > div");
+
+    cards.forEach((card, index) => {
+      const student = recentStudents[index];
+
+      if (!student) {
+        card.style.display = "none";
+        return;
+      }
+
+      card.style.display = "flex";
+
+      // Name, matricule, class (do NOT change tags)
+      const texts = card.querySelectorAll("p");
+      if (texts[0]) texts[0].textContent = student.name || "—";
+      if (texts[1]) {
+        texts[1].textContent =
+          `${student.matricule || ""} · ${student.class || ""}`;
+      }
+
+      // Percentage / average
+      const percent = card.querySelector("h3");
+      if (percent) {
+        percent.textContent =
+          (student.average ?? student.avg ?? 0) + "%";
+      }
+
+      // Grade button
+      const gradeBtn = card.querySelector("button");
+      if (gradeBtn) {
+        gradeBtn.textContent = student.grade || "-";
+
+        // normalize grade class (A+, A, B, C, D, F)
+        const gradeClass =
+          String(student.grade || "")
+            .toUpperCase()
+            .replace("+", "plus");
+
+        gradeBtn.className = gradeClass;
+      }
+    });
+
+  } catch (err) {
+    console.error("Recent Results update failed:", err);
+  }
+})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --border:#e5e7eb;
+}
+
+[data-theme="dark"]{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --border:#334155;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+section, .card, .panel, .box, table{
+  background:var(--card);
+  border-color:var(--border);
+}
+</style>
+
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="/Dstyle.css">
+ <link rel="stylesheet" href="Dstyle.css">
+ <link rel="stylesheet" href="/Assets/fontawesome/css/all.min.css">
+ <link rel="stylesheet" href="C:\Users\USER\Desktop\SG PROGECT\Assets\fontawesome\fontawesome\css\all.min.css">
+ <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+ <link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+ <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+<link rel="stylesheet" href="/ui animation.css">
+<link rel="stylesheet" href="ui animation.css">
+ <title>Student Result Management</title>
+<script>
+    if (localStorage.getItem("adminLoggedIn") !=="true"){
+    window.location.href = "result1.html";
+}
+
+    function logout() {
+        localStorage.removeItem("adminLoggedIn");
+        window.location.href = "admin-login.html";
+    }
+</script>
+<script>
+  function togglePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = popup.style.display === "none" ? "block" : "none";
+  }
+</script>
+<style>
+    #popup {
+  position: absolute;
+  background:rgb(218, 217, 217);
+  padding: 10px;
+  border: 1px solid #ccc;
+  top: 355px;
+  left: 30px;
+  width: 140px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(rgb(233, 231, 231));
+}
+
+.rcontainer {
+    max-width: 1100px;
+    margin-left: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    align-items: center;
+    
+}
+
+input, .rb {
+    padding: 8px;
+    margin: 5px;
+}
+
+.rb {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+}
+
+.rb:hover {
+    background: #0056b3;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.subjects div {
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #f0f0f0;
+}
+</style>
+</head>
+<body>
+<script>
+
+
+(function CatalystEngine() {
+   if (window.__CATALYST_ENGINE__) return;
+  window.__CATALYST_ENGINE__ = true;
+
+   document.documentElement.style.scrollBehavior = "auto";
+  document.documentElement.style.contain = "layout style paint";
+
+
+  const queue = [];
+  const executed = new WeakSet();
+
+  window.catalyst = function (fn) {
+    if (typeof fn !== "function" || executed.has(fn)) return;
+    executed.add(fn);
+    queue.push(fn);
+  };
+
+
+  function run(fn) {
+    try { fn(); }
+    catch (e) { console.warn("[Catalyst]", e); }
+  }
+
+  
+  function drainQueue() {
+    while (queue.length) run(queue.shift());
+  }
+
+  const idle = window.requestIdleCallback
+    ? cb => requestIdleCallback(cb, { timeout: 1200 })
+    : cb => setTimeout(cb, 150);
+
+ 
+  const originalAdd = document.addEventListener;
+  document.addEventListener = function (type, listener, options) {
+    if (type === "DOMContentLoaded") {
+      if (listener.__catalyst_done__) return;
+      listener.__catalyst_done__ = true;
+    }
+    return originalAdd.call(this, type, listener, options);
+  };
+
+    if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => idle(drainQueue));
+  } else {
+    idle(drainQueue);
+  }
+
+    requestAnimationFrame(() => {
+    document.body.style.visibility = "visible";
+  });
+
+   const _setTimeout = window.setTimeout;
+  window.setTimeout = function (fn, delay) {
+    return _setTimeout(fn, Math.max(delay || 0, 0));
+  };
+
+})();
+</script>
+
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+    <header>
+
+
+     <h1 id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; margin-top: 5px; margin-left: 5px; margin-bottom: 5px;"><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></h1>
+     <p style="color: grey; font-size:15px ; margin-left:10px  ;"> Result management</p>
+     <p class="pdash"><b><span class="span1">Results</span></b><br>Welcome Back! Here's An Overview Of The students Performance</p>
+     <hr class="vline">
+    <div class="nav-container">
+     <nav id="navbar">
+      <div class="searchbox">
+      <input type="text" class="search" placeholder="Search student...">
+      <i onclick="search()" class=" fa fa-search s-icon"></i>
+      </div>
+      
+<a href="#" class="navlink"><button  id="Bicon" ><p class="ap">Admin<p></p><i class="fa fa-user fa-2x "></i></button></a>
+<button id="bellicon"><i class="fa fa-bell" ></i></button>
+<span id="bellDot" style="
+  display:none;
+  position:absolute;
+  top:18px;
+  right:158px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:red;
+"></span>
+
+<div id="notificationPopup" style="
+  display:none;
+  position:absolute;
+  top:60px;
+  right:20px;
+  width:260px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  z-index:999;
+  padding:10px;
+">
+  <h4 style="margin:5px 0;">Notifications</h4>
+  <ul id="notificationList" style="list-style:none;padding:0;margin:0;"></ul>
+</div>
+
+     </nav>     
+       
+    </div>
+    <hr class="hline">
+    <div class="vertical-nav">
+    <ul>
+      <li><a href="index.Html"><i class="fa fa-bars"></i>  DashBoard</a></li>
+        <li><a href="Students.html"><i class="fa fa-users"></i> Students</a></li>
+        <li><a href="result1.html"><i class="fa fa-file"></i> Results</a></li>
+        <li><a href="Analytics.html"><i class="fa fa-bar-chart"></i> Analysis</a></li>
+        <li><a href="settings.html"><i class="fa fa-gear"></i> Settings</a></li>
+    </ul>
+    <p class="popb" onclick="togglePopup()"  ><i class=" fa fa-"></i>More Options</p>
+
+<div id="popup" style="display: none;">
+  <a class="plink"  href="Tloginpage.html" target="_blank">login</a><br>
+  <a class="plink"  href="signuppage.html" target="_blank">Sign In</a><br>
+  <a class="plink" href="Students.html" target="_blank">View results</a>
+  </div>
+    <div class="lastnav">
+    <p>Academic year</p>
+    <h2 id="year"> 2025-2026</h2>
+    
+</div>
+
+ </header>  
+<main>
+<div class="rcontainer">
+<div class="section">
+<h3>Grading Scale</h3>
+<div id="gradingScale"></div>
+<button class="rb" onclick="addGrade()">Add Grade</button>
+</div>
+
+
+<div class="section">
+<h3>Add Student</h3>
+<input id="studentName" placeholder="Name">
+<label>Matricule</label>
+<input type="text" id="matricule" placeholder="Matricule">
+<input id="class" type="text" placeholder="Class">
+<input id="department" type="text" placeholder="Department">
+
+<h4>Subjects</h4>
+<div class="subjects" id="subjects"></div>
+<button class="rb" onclick="addSubject()">Add Subject</button>
+<br><br>
+<button class="rb" onclick="addStudent()">Save Student</button>
+</div>
+
+
+<div class="section">
+<h3>Students Results</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Matricule</th>
+<th>Class</th>
+<th>Department</th>
+<th>Total</th>
+<th>Average</th>
+<th>Grade</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="studentTable"></tbody>
+</table>
+<button onclick="logout()" style="background-color: #dc3545; border-radius: 10px; border: none; padding: 10px; margin: 5px;">logout</button>
+<button onclick="window.location.href='admin-settings.html'" style="border-radius: 10px; border: none; padding: 6px; margin: 5px;">
+  <i class="fa fa-gear"></i>  Admin Settings
+</button>
+
+</div>
+</div>
+
+<script>
+let gradingScale = JSON.parse(localStorage.getItem("gradingScale")) || [
+    { grade: "A", min: 70 },
+    { grade: "B", min: 60 },
+    { grade: "C", min: 50 },
+    { grade: "D", min: 45 },
+    { grade: "F", min: 0 }
+];
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+let editIndex = null;
+
+function saveData() {
+    localStorage.setItem("gradingScale", JSON.stringify(gradingScale));
+    localStorage.setItem("students", JSON.stringify(students));
+}
+function realignAndRegrade() {
+    // Sort grading scale from highest min to lowest
+    gradingScale.sort((a, b) => b.min - a.min);
+
+    // Recalculate grades for all students
+    students.forEach(s => {
+        s.grade = calculateGrade(s.avg);
+    });
+
+    saveData();
+    renderStudents();
+}
+
+
+function renderGradingScale() {
+    const div = document.getElementById("gradingScale");
+    div.innerHTML = "";
+
+    gradingScale.forEach((g, i) => {
+        div.innerHTML += `
+        Grade <input value="${g.grade}" 
+               onchange="gradingScale[${i}].grade=this.value; realignAndRegrade()">
+        Min <input type="number" value="${g.min}" 
+               onchange="gradingScale[${i}].min=this.value; realignAndRegrade()">
+        <button class="rb" style="background:#dc3545" onclick="deleteGrade(${i})">Delete</button>
+        <br>`;
+    });
+
+    saveData();
+}function addGrade() {
+    gradingScale.push({ grade: "New", min: 0 });
+    realignAndRegrade();
+    renderGradingScale();
+}
+
+function deleteGrade(index) {
+    if (confirm("Delete this grade?")) {
+        gradingScale.splice(index, 1);
+realignAndRegrade();
+        renderGradingScale();
+    }
+}
+
+
+function addSubject(name="", mark="") {
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <input placeholder="Subject" value="${name}">
+        <input type="number" placeholder="Mark" value="${mark}">
+    `;
+    document.getElementById("subjects").appendChild(div);
+}
+
+function calculateGrade(avg) {
+    const sorted = [...gradingScale].sort((a,b)=>b.min-a.min);
+    for (let g of sorted) {
+        if (avg >= g.min) return g.grade;
+    }
+    return "N/A";
+}
+
+function clearForm() {
+    document.getElementById("studentName").value = "";
+    document.getElementById("matricule").value = "";
+    document.getElementById("class").value = "";
+    department.value = "";
+    document.getElementById("subjects").innerHTML = "";
+    editIndex = null;
+}
+
+function addStudent() {
+    const subjectsDiv = document.querySelectorAll("#subjects div");
+    let total = 0, count = 0;
+    let subjects = [];
+
+    subjectsDiv.forEach(s => {
+        const sub = s.children[0].value;
+        const mark = Number(s.children[1].value);
+        if (sub && !isNaN(mark)) {
+            subjects.push({ sub, mark });
+            total += mark;
+            count++;
+        }
+    });
+
+    const avg = count ? (total / count).toFixed(2) : 0;
+    const grade = calculateGrade(avg);
+
+    const studentData = {
+    name: document.getElementById("studentName").value,
+    matricule: document.getElementById("matricule").value.trim(),
+    class: document.getElementById("class").value,
+    department: department.value,
+    subjects,
+    total,
+    avg,         
+    grade
+};
+
+
+    if (editIndex !== null) {
+        students[editIndex] = studentData;
+    } else {
+        students.push(studentData);
+    }
+
+    saveData();
+    renderStudents();
+    clearForm();
+}
+
+function editStudent(index) {
+    const s = students[index];
+    document.getElementById("studentName").value = s.name;
+    document.getElementById("matricule").value = s.matricule;
+
+    document.getElementById("class").value = s.class;
+    department.value = s.department;
+
+    document.getElementById("subjects").innerHTML = "";
+    s.subjects.forEach(sub => addSubject(sub.sub, sub.mark));
+
+    editIndex = index;
+}
+
+function deleteStudent(index) {
+    if (confirm("Delete this student?")) {
+        students.splice(index, 1);
+        saveData();
+        renderStudents();
+    }
+}
+
+function renderStudents() {
+    const table = document.getElementById("studentTable");
+    table.innerHTML = "";
+
+    const frag = document.createDocumentFragment();
+
+    students.forEach((s, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${s.name}</td>
+          <td>${s.matricule}</td>
+          <td>${s.class}</td>
+          <td>${s.department}</td>
+          <td>${s.total}</td>
+          <td>${s.avg}</td>
+          <td>${s.grade}</td>
+          <td>
+            <button class="rb" onclick="editStudent(${i})">Edit</button>
+            <button class="rb" style="background:#dc3545" onclick="deleteStudent(${i})">Delete</button>
+          </td>
+        `;
+        frag.appendChild(tr);
+    });
+
+    table.appendChild(frag);
+}
+
+
+renderGradingScale();
+renderStudents();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const adminBtn = document.getElementById("Bicon");
+  const popup = document.getElementById("adminListPopup");
+  const list = document.getElementById("adminList");
+
+  if (!adminBtn || !popup || !list) return;
+
+  function loadAdmins() {
+    list.innerHTML = "";
+    const admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    if (admins.length === 0) {
+      list.innerHTML = "<li>No admins found</li>";
+      return;
+    }
+
+    admins.forEach((admin, index) => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+      li.style.padding = "6px 0";
+
+      li.innerHTML = `
+        <div>
+          <b>${admin.name || "Admin"}</b><br>
+          <small>${admin.email}</small>
+        </div>
+        <button data-index="${index}" style="
+          background:#d9534f;
+          color:white;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      li.querySelector("button").addEventListener("click", () => {
+        if (!confirm("Delete this admin?")) return;
+
+        admins.splice(index, 1);
+        localStorage.setItem("admins", JSON.stringify(admins));
+        loadAdmins();
+      });
+
+      list.appendChild(li);
+    });
+  }
+
+  adminBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadAdmins();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!adminBtn.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bellBtn = document.getElementById("bellicon");
+  const bellDot = document.getElementById("bellDot");
+  const popup = document.getElementById("notificationPopup");
+  const list = document.getElementById("notificationList");
+
+  if (!bellBtn || !popup || !list) return;
+
+  const students = JSON.parse(localStorage.getItem("students")) || [];
+  let notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+
+  /* CREATE NOTIFICATIONS (A+ OR FAILING GRADES) */
+  students.forEach(s => {
+    if (s.grade === "A+" || ["D","E","F"].includes(s.grade)) {
+      const exists = notifications.some(
+        n => n.matricule === s.matricule && n.grade === s.grade
+      );
+      if (!exists) {
+        notifications.push({
+          id: Date.now() + Math.random(),
+          name: s.name,
+          class: s.class,
+          matricule: s.matricule,
+          grade: s.grade,
+          type: s.grade === "A+" ? "good" : "bad",
+          read: false,
+          createdAt: Date.now()
+        });
+      }
+    }
+  });
+
+  localStorage.setItem("notifications", JSON.stringify(notifications));
+
+  /* UPDATE BELL DOT */
+  function updateDot() {
+    const unread = notifications.filter(n => !n.read);
+    if (unread.length === 0) {
+      bellDot.style.display = "none";
+      return;
+    }
+    bellDot.style.display = "block";
+    bellDot.style.background =
+      unread.some(n => n.type === "bad") ? "red" : "green";
+  }
+
+  /* LOAD NOTIFICATIONS */
+  function loadNotifications() {
+    list.innerHTML = "";
+
+    if (notifications.length === 0) {
+      list.innerHTML = "<li>No notifications</li>";
+      updateDot();
+      return;
+    }
+
+    notifications.forEach((n, index) => {
+      const li = document.createElement("li");
+      li.style.padding = "8px";
+      li.style.marginBottom = "6px";
+      li.style.borderLeft = `5px solid ${n.type === "bad" ? "red" : "green"}`;
+      li.style.background = n.read ? "#f4f4f4" : "#fff";
+      li.style.display = "flex";
+      li.style.justifyContent = "space-between";
+      li.style.alignItems = "center";
+
+      li.innerHTML = `
+        <div style="cursor:pointer">
+          <b>${n.name}</b><br>
+          <small>${n.class} · ${n.matricule}</small><br>
+          <small>Grade: ${n.grade}</small>
+        </div>
+        <button style="
+          background:#d9534f;
+          color:#fff;
+          border:none;
+          border-radius:4px;
+          padding:2px 6px;
+          cursor:pointer;
+        ">✖</button>
+      `;
+
+      /* MARK AS READ */
+      li.querySelector("div").onclick = () => {
+        n.read = true;
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      /* DELETE MANUALLY */
+      li.querySelector("button").onclick = (e) => {
+        e.stopPropagation();
+        notifications.splice(index, 1);
+        localStorage.setItem("notifications", JSON.stringify(notifications));
+        loadNotifications();
+      };
+
+      list.appendChild(li);
+    });
+
+    updateDot();
+  }
+
+  /* TOGGLE POPUP */
+  bellBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    popup.style.display =
+      popup.style.display === "block" ? "none" : "block";
+    loadNotifications();
+  });
+
+  /* CLOSE ON OUTSIDE CLICK */
+  document.addEventListener("click", (e) => {
+    if (!popup.contains(e.target) && !bellBtn.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+
+  updateDot();
+});
+</script>
+<script>
+(function(){
+  const s = JSON.parse(localStorage.getItem("systemSettings"));
+  if(s && s.theme){
+    document.documentElement.setAttribute("data-theme", s.theme);
+  }
+})();
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+<script>
+
+(function () {
+  const originalAddStudent = window.addStudent;
+
+  window.addStudent = function () {
+    // Only generate matricule when ADDING, not editing
+    if (editIndex === null) {
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      const nextNumber = students.length + 1;
+
+      const matriculeInput = document.getElementById("matricule");
+      if (matriculeInput) {
+        matriculeInput.value = "RGIN100" + nextNumber;
+      }
+    }
+
+    // Run the original addStudent exactly as before
+    originalAddStudent();
+  };
+})();
+</script>
+
+
+</main>
+
+ <footer>
+   
+   </div>
+  <marquee> 
+<span> &copy; CopyRight RoschEbori2025</span>
+<span>&nbsp;<i class="fa fa-envelope"></i>rginstitute@gmail.com </span>
+<span>&nbsp; <i class="fa-brands fa-facebook"></i>rginstitute</span>
+<span>&nbsp;<i class="fa-brands fa-whatsapp"></i>+237-659188549</span>
+<span>&nbsp;<i class="fa-brands fa-tiktok"></i>+237-659188549</span>
+<span>&nbsp;<i class="fa-brands fa-instagram"></i>RGINSITUTE</span>
+</marquee>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/LOGIN PAGE/Lstyle.css">
+     <link rel="stylesheet" href="/analytics.css">
+    <link rel="stylesheet" href="Lstyle.css">
+     <link rel="stylesheet" href="analytics.css">
+     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+     <link rel="shortcut icon" href="/Assets/IMAGES/RGINSTITUTE.png" type="image/x-icon">
+     <link rel="stylesheet" href="/Responsiveness.css">
+ <link rel="stylesheet" href="Responsiveness.css">
+ <link rel="stylesheet" href="/ui animation.css">
+<link rel="stylesheet" href="ui animation.css">
+ <link rel="shortcut icon" href="C:\Users\USER\Desktop\SG PROGECT\Assets\IMAGES\RGINSTITUTE.png" type="image/x-icon">
+    <title>Sign UP</title>
+    <style>
+    h6{
+white-space:nowrap;
+overflow: hidden;
+border-right:1px solid blue;
+width: 0;
+animation: typing 3s steps(30, end) 7s infinite, blink 0.7s step-end infinite;
+}
+@keyframes typing{
+0% { width:0 }
+30% {width: 27% }
+80% {width: 0 }
+100% {width: 27% }
+}
+@keyframes blink{
+ 50% {border-color: transparent; }
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+      <nav>
+        <p id="logo"><button style=" border:1px solid blue; width: 40px; height: 35px; background-color: blue; color: white; border-radius: 5px; "><i class="fa fa-graduation-cap fa-2x"></i></button>RgGrade<br></p>
+     
+        <div class="Nlink">
+<a href="signuppage.html">Sign Up</a>
+ </div>
+ <div class="Mlink">
+<a href="Tloginpage.html">Login</a>
+     </div>  
+        <button class="mdash"><a href="index.Html" style="color: white; text-decoration: none; font: optional;">My dashboard</a></button>
+    </nav>
+    <hr>
+    <main>
+ <div class="out">
+  <p class="a"> <span> Sign Up To<br> Rg Institute<br></span></p>
+   <br><br>
+   <h6>Welcome to RG Institute</h6>
+    </div>
+<div class="box">
+ 
+    <form class="form">
+<h2>Sign up</h2><br>
+<h5>Enter your credentials to create your<br>dashboard</h5>
+<label for="">School Name</label>
+<input id="school" class="formi" type="text" required placeholder="Enter School Name">
+
+<label for="">Email</label>
+<input id="email" class="formi" required placeholder="Enter your email">
+<label for="">Password</label>
+<input id="password" class="formi" type="password" required placeholder="Enter password"><label for="">Confirm Password</label>
+<i style="position: absolute; top:458px; right:370px;" class="fa fa-eye"></i>
+<input id="confirm" class="formi" type="password" required placeholder="Confirm password">
+<i style="position: absolute; top:380px; right:370px;" class="fa fa-eye"></i>
+<button class="lb" type="submit">Sign up</button>
+    <div class="check"> 
+   <p2>Already have an account?</p2>
+    <a href="Tloginpage.html" target="_blank" >Sign in</a>
+    <a href="student-result.html" target="_blank" style="border-radius: 7px; border: 1px solid grey;">Sign in as a Student</a>
+</div>
+    </div> 
+</form>
+
+</main>
+<footer>
+   
+   </div>
+  <marquee> 
+<span class="i"> &copy; CopyRight RoschEbori2025</span>
+<span  class="i">&nbsp;<i class="fa fa-envelope"></i>rginstitute@gmail.com </span>
+<span  class="i">&nbsp; <i class="fa-brands fa-facebook"></i>rginstitute</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-whatsapp"></i>+237-659188549</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-tiktok"></i>+237-659188549</span>
+<span  class="i">&nbsp;<i class="fa-brands fa-instagram"></i>RGINSITUTE</span>
+</marquee>
+
+
+
+
+  </footer>
+<script>
+document.querySelector(".form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const school = document.getElementById("school").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    if (password !== confirm) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    let admins = JSON.parse(localStorage.getItem("admins")) || [];
+
+    // prevent duplicate admin
+    if (admins.some(a => a.email === email)) {
+        alert("Admin already exists");
+        return;
+    }
+
+    const newAdmin = { school, email, password };
+    admins.push(newAdmin);
+
+    localStorage.setItem("admins", JSON.stringify(admins));
+
+    // auto login
+    localStorage.setItem("loggedAdmin", JSON.stringify(newAdmin));
+
+    // redirect to result page / dashboard
+    window.location.href = "result1.html";
+});
+</script>
+<script>
+const toggle = document.getElementById("menuToggle");
+
+toggle?.addEventListener("click", () => {
+  document.querySelector("#navbar")?.classList.toggle("active");
+  document.querySelector(".vertical-nav")?.classList.toggle("active");
+  document.querySelector("nav")?.classList.toggle("active");
+});
+</script>
+
+
+</body>
+</html>
